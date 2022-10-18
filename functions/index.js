@@ -1,12 +1,15 @@
 import functions from 'firebase-functions'
 import express from 'express'
+import { creatUser } from './src/users.js'
 const app = express()
+app.post('/users', creatUser)
+export const api = functions.https.onRequest(app)
 
 //creat func api and directed it to our cloud
-app.get('/test', (req, res) => res.send('Our first works!'))
+//app.get('/test', (req, res) => res.send('Our first works!'))
 
 //match the function in firebaseConfig={.json}
-export const api = functions.https.onRequest(app)
+//export const api = functions.https.onRequest(app)
 //first api to deploy to the cloud
 
 
