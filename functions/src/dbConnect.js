@@ -3,9 +3,10 @@ import { getFirestore } from "firebase-admin/firestore";
 import ServiceAccount from "../secrets.js";
 
 export function dbConnect() {
-    if(!getApps().length) {
+    if (!getApps().length) {
         initializeApp({
             credential: cert(ServiceAccount)
         })
-    }return getFirestore()
+    }
+    return getFirestore()
 }
