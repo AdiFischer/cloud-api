@@ -22,7 +22,21 @@ export async function getAllUsers(req, res) {
     res.send(users)
 }
 export async function updateUser(req, res) {
-    //const uid = req.params.uid   or
     const { uid } = req.params
+    const db = dbConnect();
+    const doc = await db.collection('users').doc(uid).update(req.body)
+     .catch(err => res.status(500).send({ success: false, mesage: err});
+     res.status(202).send({ success: true, message: 'User update: ' + doc.id});
+
+
+
 
 }
+
+
+
+       
+
+
+
+
