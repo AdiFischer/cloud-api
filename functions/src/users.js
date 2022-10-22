@@ -1,12 +1,11 @@
-import { dbConnect } from "./dbConnect.js";
+import { dbConnect } from "./dbConnect.js";//1
 export async function creatUser(req, res) {
     const db = dbConnect();
-
     // using .then() .catch()
 
     //using async await
     const doc = await db.collection('users').add(req.body)
-    .catch(err =>res.status(500).send({ succsess:false, message:err}));
+    .catch(err =>res.status(500).send({ success:false, message:err}));
     res.status(201).send({ success: true, message: "User created " + doc.id})
 }
 
@@ -25,14 +24,11 @@ export async function updateUser(req, res) {
     const { uid } = req.params
     const db = dbConnect();
     const doc = await db.collection('users').doc(uid).update(req.body)
-     .catch(err => res.status(500).send({ success: false, mesage: err});
+     .catch(err => res.status(500).send({ success: false, message: err}));
      res.status(202).send({ success: true, message: 'User update: ' + doc.id});
 
-
-
-
 }
-
+//define functions + export before them and go to index.js
 
 
        
